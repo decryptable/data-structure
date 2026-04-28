@@ -1,0 +1,75 @@
+name: Build & Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build-windows:
+    name: Build Windows Executable
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Build with Nuitka
+        uses: Nuitka/Nuitka-Action@main
+        with:
+          nuitka-version: main
+          script-name: main.py
+          mode: onefile
+          output-file: data-structure
+          include-package: app
+          windows-console-mode: attach
+          assume-yes-for-downloads: true
+          deployment: true
+
+      - name: Prepare release artifacts
+        run: |
+          New-Item -ItemType Directory -Path release -Force | Out-Null
+          Copy-Item build/data-structure.exe release/
+          Copy-Item launcher.ps1 release/
+          Copy-Item start.bat release/
+          Compress-Archive `
+            -Path release/* `
+            -DestinationPath data-structure-windows.zip `
+            -Force
+
+      - name: Upload to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "build-${{ github.run_number }}"
+          name: "Build #${{ github.run_number }}"
+          body: |
+            **Struktur Data — UTS Genap 2025/2026**
+            Ichsan Hafizd Al-Fajry · 251240001657
+
+            ### Cara Menjalankan (Windows)
+            1. Ekstrak `data-structure-windows.zip`
+            2. Buka **PowerShell**, navigasi ke folder hasil ekstrak
+            3. Jalankan: `.\data-structure.exe`
+
+            > Atau double-click **`start.bat`** untuk otomatis membuka PowerShell.
+          files: data-structure-windows.zip
+          make_latest: true

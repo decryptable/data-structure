@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "data-structure"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "rich>=13.9.0",
+    "click>=8.1.0",
+    "InquirerPy>=0.3.4",
+]
+
+[project.scripts]
+data-structure = "main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app", "app.*"]
+
+[tool.setuptools.package-dir]
+"" = "."
