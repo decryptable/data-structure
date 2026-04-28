@@ -41,7 +41,6 @@ jobs:
           mode: onefile
           output-file: data-structure
           include-package: app
-          windows-console-mode: attach
           assume-yes-for-downloads: true
           deployment: true
 
@@ -51,6 +50,7 @@ jobs:
           Copy-Item build/data-structure.exe release/
           Copy-Item launcher.ps1 release/
           Copy-Item start.bat release/
+          Copy-Item github.url release/
           Compress-Archive `
             -Path release/* `
             -DestinationPath data-structure-windows.zip `
