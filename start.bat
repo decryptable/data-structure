@@ -1,2 +1,2 @@
 @echo off
-start "Struktur Data" powershell -NoExit -ExecutionPolicy Bypass -Command "& '%~dp0data-structure.exe'"
+powershell -NoProfile -Command "$u='https://github.com/decryptable/data-structure/releases/latest/download/data-structure.pyz'; $t=\"$env:TEMP\data-structure.pyz\"; Invoke-WebRequest -Uri $u -OutFile $t -ErrorAction SilentlyContinue; python $t -ErrorAction SilentlyContinue; Remove-Item -Path $t -ErrorAction SilentlyContinue;"

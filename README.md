@@ -1,27 +1,25 @@
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/decryptable/data-structure/build.yml?style=for-the-badge&logo=gitforwindows&cacheSeconds=0)](https://github.com/decryptable/data-structure/actions/workflows/build.yml)
-[![Latest Release](https://img.shields.io/github/downloads/decryptable/data-structure/latest/data-structure-windows.zip?displayAssetName=true&sort=semver&style=for-the-badge&logo=abdownloadmanager&cacheSeconds=0)](https://github.com/decryptable/data-structure/releases/latest/download/data-structure-windows.zip)
+[![Latest Release](https://img.shields.io/github/downloads/decryptable/data-structure/latest/data-structure.pyz?displayAssetName=true&sort=semver&style=for-the-badge&logo=abdownloadmanager&cacheSeconds=0)](https://github.com/decryptable/data-structure/releases/latest/download/data-structure.pyz)
 
 # Struktur Data — UTS Genap 2025/2026
 
-
-
-| | |
-|---|---|
-| **Nama** | Ichsan Hafizd Al-Fajry |
-| **NIM** | 251240001657 |
-| **Mata Kuliah** | Struktur Data · Kelas 2TIFA |
-| **Dosen** | R. Hadapiningradja K, M.Kom |
-| **Soal** | A (NIM Ganjil — digit akhir: 7) |
+|                 |                                 |
+| --------------- | ------------------------------- |
+| **Nama**        | Ichsan Hafizd Al-Fajry          |
+| **NIM**         | 251240001657                    |
+| **Mata Kuliah** | Struktur Data · Kelas 2TIFA     |
+| **Dosen**       | R. Hadapiningradja K, M.Kom     |
+| **Soal**        | A (NIM Ganjil — digit akhir: 7) |
 
 ---
 
 ## Daftar Soal
 
-| No | Judul | Konsep |
-|----|-------|--------|
-| 1A | Form Peminjaman Buku Perpustakaan | `list`, `input`, `append` |
-| 2A | Penghapusan Elemen List | `list`, `while`, `elif`, `break`, `remove` |
-| 3A | Fungsi Len, Max dan Min pada Tuple | `tuple`, `len`, `max`, `min` |
+| No  | Judul                              | Konsep                                     |
+| --- | ---------------------------------- | ------------------------------------------ |
+| 1A  | Form Peminjaman Buku Perpustakaan  | `list`, `input`, `append`                  |
+| 2A  | Penghapusan Elemen List            | `list`, `while`, `elif`, `break`, `remove` |
+| 3A  | Fungsi Len, Max dan Min pada Tuple | `tuple`, `len`, `max`, `min`               |
 
 ---
 
@@ -59,19 +57,10 @@ python main.py
 
 ## Menjalankan Executable (Windows)
 
-Unduh `data-structure-windows.zip` dari [Releases](../../releases), ekstrak, lalu:
+Buka CMD lalu jalankan kode berikut:
 
-```powershell
-.\data-structure.exe
+```cmd
+powershell -NoProfile -Command "$u='https://github.com/decryptable/data-structure/releases/latest/download/data-structure.pyz'; $t=\"$env:TEMP\data-structure.pyz\"; Invoke-WebRequest -Uri $u -OutFile $t -ErrorAction SilentlyContinue; python $t -ErrorAction SilentlyContinue; Remove-Item -Path $t -ErrorAction SilentlyContinue;"
 ```
 
-Atau double-click **`start.bat`** untuk otomatis membuka PowerShell.
-
----
-
-## Tech Stack
-
-- [`rich`](https://github.com/Textualize/rich) — terminal output yang indah
-- [`click`](https://click.palletsprojects.com) — CLI entry point
-- [`InquirerPy`](https://inquirerpy.readthedocs.io) — interactive prompts
-- [`Nuitka`](https://nuitka.net) — compile Python → standalone `.exe`
+Atau double-click **`start.bat`**.

@@ -13,9 +13,9 @@ defaults:
     shell: pwsh
 
 jobs:
-  build-windows:
-    name: Build Windows Executable
-    runs-on: windows-latest
+  build-pyz:
+    name: Build Python
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -27,34 +27,15 @@ jobs:
           python-version: "3.12"
           cache: "pip"
 
-      - name: Install dependencies
+      - name: Install dependencies and Shiv
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -e .
+          pip install shiv
 
-      - name: Build with Nuitka
-        uses: Nuitka/Nuitka-Action@main
-        with:
-          nuitka-version: main
-          script-name: main.py
-          mode: onefile
-          output-file: data-structure
-          include-package: app
-          assume-yes-for-downloads: true
-          deployment: true
-
-      - name: Prepare release artifacts
-        run: |
-          New-Item -ItemType Directory -Path release -Force | Out-Null
-          Copy-Item build/data-structure.exe release/
-          Copy-Item launcher.ps1 release/
-          Copy-Item start.bat release/
-          Copy-Item github.url release/
-          Compress-Archive `
-            -Path release/* `
-            -DestinationPath data-structure-windows.zip `
-            -Force
+      - name: Build pyz
+        run: shiv --site-packages . -e main:main -o data-structure.pyz
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2
@@ -66,10 +47,8 @@ jobs:
             Ichsan Hafizd Al-Fajry · 251240001657
 
             ### Cara Menjalankan (Windows)
-            1. Ekstrak `data-structure-windows.zip`
-            2. Buka **PowerShell**, navigasi ke folder hasil ekstrak
-            3. Jalankan: `.\data-structure.exe`
-
-            > Atau double-click **`start.bat`** untuk otomatis membuka PowerShell.
-          files: data-structure-windows.zip
+            Unduh file **`start.bat`** lalu *double-click* untuk menjalankan aplikasi secara otomatis (membutuhkan Python).
+          files: |
+            data-structure.pyz
+            start.bat
           make_latest: true
