@@ -1,5 +1,5 @@
-![Workflow Status](https://img.shields.io/github/actions/workflow/status/decryptable/data-structure/build.yml?style=for-the-badge&logo=gitforwindows&cacheSeconds=0&link=https%3A%2F%2Fgithub.com%2Fdecryptable%2Fdata-structure%2Factions%2Fworkflows%2Fbuild.yml)
-![Latest Release](https://img.shields.io/github/downloads/decryptable/data-structure/latest/data-structure-windows.zip?displayAssetName=true&sort=semver&style=for-the-badge&logo=abdownloadmanager&cacheSeconds=0)
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/decryptable/data-structure/build.yml?style=for-the-badge&logo=gitforwindows&cacheSeconds=0)](https://github.com/decryptable/data-structure/actions/workflows/build.yml)
+[![Latest Release](https://img.shields.io/github/downloads/decryptable/data-structure/latest/data-structure-windows.zip?displayAssetName=true&sort=semver&style=for-the-badge&logo=abdownloadmanager&cacheSeconds=0)](https://github.com/decryptable/data-structure/releases/latest/download/data-structure-windows.zip)
 
 # Struktur Data — UTS Genap 2025/2026
 
